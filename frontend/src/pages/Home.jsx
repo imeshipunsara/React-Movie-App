@@ -1,23 +1,38 @@
-import MovieCard from "../components/MovieCard"
-import { useState } from "react"
-import "../css/Home.css"
+import MovieCard from "../components/MovieCard";
+import { useState, useEffect} from "react";
+import {searchMovies,getPopularMovies} from "../services/api";
+import "../css/Home.css";
 
 
 //show multiple different movie cards
 function Home(){
-    const [searchQuery, setSearchQuery] = useState(""); //state code
+    const [searchQuery, setSearchQuery] = useState(""); 
 
-    const movies = [
-        {id: 1, title:"Avatar", release_date:"2026"},
-        {id: 2, title:"jhone wick", release_date:"2020"},
-        {id: 3, title:"terminator", release_date:"1990"},
-        {id: 4, title:"the matricks", release_date:"1998"},
-    ];
+    const [movies, setMovies] = useState([]);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+      
+    
+  useEffect(() => {
+    const loadPopularMovies = async () => {
+      try {
+        const popularMovies = await getPopularMovies();
+        setMovies(popularMovies);
+      } catch (err) {
+        console.log(err);
+        setError("Failed to load movies...");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    const handleSearch = () => {
-        e.preventDefault()
-        alert(searchQuery)
-        setSearchQuery("........")
+    loadPopularMovies();
+  }, []);
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        alert(searchQuery);
+        setSearchQuery("");
     };
 
     return(
@@ -34,15 +49,16 @@ function Home(){
             <button type="submit" className="search-btn">Search</button>
         </form>
         
+        {error && <div className="error-massage">{error}</div>}
 
+        {loading ? (
+            <div className="loading">Loading...</div>
+        ) : (
         <div className="movies-grid">
-            {movies.map(
-                (movie) => 
-                (
+            {movies.map((movie) => (
                 <MovieCard movie={movie} key={movie.id}/>
-                )
-            )}
-        </div>
+                ))}
+        </div>) }
     </div>
     );
 }
