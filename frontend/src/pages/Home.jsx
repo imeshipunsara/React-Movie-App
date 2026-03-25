@@ -1,5 +1,6 @@
 import MovieCard from "../components/MovieCard"
 import { useState } from "react"
+import "../css/Home.css"
 
 
 //show multiple different movie cards
@@ -26,7 +27,7 @@ function Home(){
             <input 
             type="text" 
             placeholder="Search for movies..." 
-            className="serch-input"
+            className="search-input"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
              />
