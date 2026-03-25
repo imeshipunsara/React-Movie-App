@@ -66,11 +66,11 @@
 }
 
 .favorite-bttn:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(239, 113, 113, 0.8);
 }
 
 .favorite-bttn.active {
-  color: #ff0015;
+  color: #ff4757;
 }
 
 .rating-select {

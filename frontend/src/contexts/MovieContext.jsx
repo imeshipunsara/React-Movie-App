@@ -24,8 +24,9 @@ export const MovieProvider = ({children}) => {
         setFavorites(prev => prev.filter(movie => movie.id !== movieID))
     }
     const isFavorite = (movieID) => {
-        return favorites.some(movie => movieID === movieID)
+    return favorites.some(movie => movie.id === movieID)
     }
+    
     const value = {
         favorites, 
         addToFavorites,

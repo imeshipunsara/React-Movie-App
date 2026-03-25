@@ -7,7 +7,7 @@ import "../css/Home.css";
 //show multiple different movie cards
 function Home(){
     const [searchQuery, setSearchQuery] = useState(""); 
-
+    
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
