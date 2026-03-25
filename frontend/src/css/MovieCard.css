@@ -52,7 +52,7 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
-  color: rgb(253, 253, 253);
+  color: rgb(255, 255, 255);
   font-size: 1.5rem;
   padding: 0.5rem;
   background-color: rgba(0, 0, 0, 0.5);
@@ -70,7 +70,7 @@
 }
 
 .favorite-bttn.active {
-  color: #ff4757;
+  color: #ff0015;
 }
 
 .rating-select {
